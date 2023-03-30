@@ -11,8 +11,8 @@ npx hardhat test
 ![messageImage_1680170166584](https://user-images.githubusercontent.com/87699256/228800249-6f0956a9-e1c2-4ba8-8f51-a4defb2ca480.jpg)
 
 # Requirement
-- Contract A (safe.sol): Add a TakeFee function to the Lab3 assignment and ensure it has an owner.
-- Contract B (safeUpgradeable.sol): Similar to A, but an implementation contract that can be initialized by the initialization function by the owner. Initialization is necessary since the constructor doesn't get executed when being pointed by proxies.
+- Contract A (Safe.sol): Add a TakeFee function to the Lab3 assignment and ensure it has an owner.
+- Contract B (SafeUpgradeable.sol): Similar to A, but an implementation contract that can be initialized by the initialization function by the owner. Initialization is necessary since the constructor doesn't get executed when being pointed by proxies.
 - Contract C (Proxy.sol): A proxy contract with an owner that only needs to have two unstructured storages - owner and implementation. Only the owner can update the implementation contract, which is currently contract B.
 - Contract D (SafeFactory.sol): A factory contract with an owner that stores the current implementation address. It has three functions: F1, F2, F3:
     - F1: deploySafe. This function can deploy contract A.
