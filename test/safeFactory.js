@@ -45,9 +45,9 @@ describe("Lab4_SafeFactory", function() {
         expect(implementationOwner).to.equal(owner.address); //check whether the caller of the deployed deploySafeProxy is the owner of Proxy's implementation contract
     });
     
-    it("should update the implementation contract for SafeProxy", async function() {
+    it("should update the implementation contract for deploySafeProxy", async function() {
         const proxyInstance = await ethers.getContractFactory("Proxy");
-        const newImplementation = await ethers.getContractFactory("Safe"); // use SafeUpgradeable contract as new iplmentatation
+        const newImplementation = await ethers.getContractFactory("SafeUpgradeable"); // use SafeUpgradeable contract as new iplmentatation
 
         const safe = await newImplementation.deploy(); //deploy newImplementation
         const safeAddesss = await safe.address; //get newImplementation's address

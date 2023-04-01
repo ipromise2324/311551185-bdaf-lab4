@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">10.53% </span>
+        <span class="strong">84.21% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/19</span>
+        <span class='fraction'>16/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">3.57% </span>
+        <span class="strong">53.57% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/28</span>
+        <span class='fraction'>15/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/7</span>
+        <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16% </span>
+        <span class="strong">84% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/25</span>
+        <span class='fraction'>21/25</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -114,28 +114,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -143,20 +143,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
@@ -172,7 +172,7 @@ contract SafeUpgradeable {
     mapping(address =&gt; uint256) private fees;
     bool isInitialized ;
     function initialize(address _owner) public {
-        <span class="missing-if-branch" title="else path not taken" >E</span>require(!isInitialized,"already initialized");
+        require(!isInitialized,"already initialized");
         
         owner = _owner;
         isInitialized = true;
@@ -181,40 +181,40 @@ contract SafeUpgradeable {
     {
         return owner;
     }
-<span class="fstat-no" title="function not covered" >    function deposit(address token, uint256 amount) public {</span>
-<span class="cstat-no" title="statement not covered" >        require(isInitialized == true, "Not Init yet!!!")</span>;
-<span class="cstat-no" title="statement not covered" >        require(amount &gt; 0, "Amount must be greater than 0")</span>;
-<span class="cstat-no" title="statement not covered" >        require(token != address(0), "Can't send to 0x00.. address")</span>;
-<span class="cstat-no" title="statement not covered" >        uint256 fee = (amount*1)/1000;</span> // Takes a 0.1% tax.
+    function deposit(address token, uint256 amount) public {
+        require(isInitialized == true, "Not Init yet!!!");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(amount &gt; 0, "Amount must be greater than 0");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(token != address(0), "Can't send to 0x00.. address");
+        uint256 fee = (amount*1)/1000; // Takes a 0.1% tax.
         balances[msg.sender][token] += (amount-fee);
         fees[token] += fee;
-<span class="cstat-no" title="statement not covered" >        require(IERC20(token).transferFrom(msg.sender, address(this), amount), "Token transfer failed")</span>;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(IERC20(token).transferFrom(msg.sender, address(this), amount), "Token transfer failed");
         
     }
     
-<span class="fstat-no" title="function not covered" >    function withdraw(address token, uint256 amount) public {</span>
-<span class="cstat-no" title="statement not covered" >        require(isInitialized == true, "Not Init yet!!!")</span>;
+    function withdraw(address token, uint256 amount) public {
+        <span class="missing-if-branch" title="if path not taken" >I</span>require(isInitialized == true, "Not Init yet!!!");
 <span class="cstat-no" title="statement not covered" >        require(amount &gt; 0, "Amount must be greater than 0")</span>;
 <span class="cstat-no" title="statement not covered" >        require(balances[msg.sender][token] &gt;= amount, "Not enough amount to withdraw")</span>;
         balances[msg.sender][token] -= amount;
 <span class="cstat-no" title="statement not covered" >        require(IERC20(token).transfer(msg.sender, amount), "Token transfer failed")</span>;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function takeFee(address token) public {</span>
-<span class="cstat-no" title="statement not covered" >        require(isInitialized == true, "Not Init yet!!!")</span>;
-<span class="cstat-no" title="statement not covered" >        require(msg.sender == owner, "Only owner can take fees")</span>; //Only the owner of the contract can call it.
-<span class="cstat-no" title="statement not covered" >        uint256 amount = fees[token];</span>
+    function takeFee(address token) public {
+        require(isInitialized == true, "Not Init yet!!!");
+        require(msg.sender == owner, "Only owner can take fees"); //Only the owner of the contract can call it.
+        uint256 amount = fees[token];
         fees[token] = 0;
-<span class="cstat-no" title="statement not covered" >        require(IERC20(token).transfer(msg.sender, amount), "Fees transfer failed")</span>; //The owner should get the token fees that are accumulated in the contract.
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(IERC20(token).transfer(msg.sender, amount), "Fees transfer failed"); //The owner should get the token fees that are accumulated in the contract.
     }
     
-<span class="fstat-no" title="function not covered" >    function getBalance(address token) public view returns(uint256 balance) {</span>
-<span class="cstat-no" title="statement not covered" >        require(isInitialized == true, "Not Init yet!!!")</span>;
-<span class="cstat-no" title="statement not covered" >        return balances[msg.sender][token];</span>
+    function getBalance(address token) public view returns(uint256 balance) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(isInitialized == true, "Not Init yet!!!");
+        return balances[msg.sender][token];
     }
-<span class="fstat-no" title="function not covered" >    function getFees(address token) public view returns(uint256 fee) {</span>
-<span class="cstat-no" title="statement not covered" >        require(isInitialized == true, "Not Init yet!!!")</span>;
-<span class="cstat-no" title="statement not covered" >        return fees[token];</span>
+    function getFees(address token) public view returns(uint256 fee) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(isInitialized == true, "Not Init yet!!!");
+        return fees[token];
     }
 }
 &nbsp;</pre></td></tr>
@@ -223,7 +223,7 @@ contract SafeUpgradeable {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 30 2023 17:44:51 GMT+0800 (台北標準時間)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 01 2023 21:29:24 GMT+0800 (台北標準時間)
 </div>
 </div>
 <script src="../prettify.js"></script>

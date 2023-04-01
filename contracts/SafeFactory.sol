@@ -44,9 +44,8 @@ contract SafeFactory {
 
     function deploySafe() external {
         // TODO: Deploys the original Safe contract. Note that you might need to modify the Safe contract so that the original caller of the deploySafe contract will be the owner of the deployed "Safe” contract.
-        Safe safe = new Safe();
+        Safe safe = new Safe(owner);
         safeAddress = address(safe);
-        safe.initialize(owner); 
     }
 
 }
