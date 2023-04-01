@@ -19,6 +19,48 @@ describe('Lab4_SafeUpgradeable', function () {
         await erc20.approve(safeWallet.address, amount);
     }); 
 
+    it("should revert deposit if amount is zero", async function() {
+        await safeWallet.initialize(owner.address);
+        const zeroAmount = 0;
+        await expect(safeWallet.deposit(erc20.address, zeroAmount)).to.be.revertedWith("Amount must be greater than 0");
+    });
+
+    it("should revert deposit if sending to address(0)", async function() {
+        await safeWallet.initialize(owner.address);
+        await expect(safeWallet.deposit(ethers.constants.AddressZero, amount)).to.be.revertedWith("Can't send to 0x00.. address");
+    });
+
+    it("Deposit: amount must be greater than 0", async function() {
+        await safeWallet.initialize(owner.address);
+        // Transfer tokens to user1
+        const transferAmount = 100;
+        await erc20.transfer(user.address, transferAmount);
+        const depositAmount = 50;
+    
+        // Deposit tokens to safe
+        await erc20.connect(user).approve(safeWallet.address, depositAmount);
+        await safeWallet.connect(user).deposit(erc20.address, depositAmount);
+    
+        // Try to withdraw more than available balance
+        await expect(safeWallet.connect(user).withdraw(erc20.address, 0)).to.be.revertedWith("Amount must be greater than 0");
+    });
+
+    it("should not allow withdrawing more than available balance", async function() {
+        await safeWallet.initialize(owner.address);
+        // Transfer tokens to user1
+        const transferAmount = 100;
+        await erc20.transfer(user.address, transferAmount);
+        const depositAmount = 50;
+        const withdrawAmount = 100;
+    
+        // Deposit tokens to safe
+        await erc20.connect(user).approve(safeWallet.address, depositAmount);
+        await safeWallet.connect(user).deposit(erc20.address, depositAmount);
+    
+        // Try to withdraw more than available balance
+        await expect(safeWallet.connect(user).withdraw(erc20.address, withdrawAmount)).to.be.revertedWith("Not enough amount to withdraw");
+    });
+
     it("should initialize the contract only once", async function() {
         await safeWallet.initialize(owner.address);
         await expect(safeWallet.initialize(owner.address)).to.be.revertedWith("already initialized");
@@ -35,6 +77,12 @@ describe('Lab4_SafeUpgradeable', function () {
     });
     it("should not allow taking fees before initialization", async function() {
         await expect(safeWallet.takeFee(erc20.address)).to.be.revertedWith("Not Init yet!!!");
+    });
+    it("should not allow getBalance before initialization", async function() {
+        await expect(safeWallet.getBalance(erc20.address)).to.be.revertedWith("Not Init yet!!!");
+    });
+    it("should not allow getFees before initialization", async function() {
+        await expect(safeWallet.getFees(erc20.address)).to.be.revertedWith("Not Init yet!!!");
     });
 
     it('should deposit 1000 tokens and charge a fee of 1 token', async function () {

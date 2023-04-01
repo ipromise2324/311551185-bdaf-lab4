@@ -13,12 +13,8 @@ contract Proxy  {
 
     modifier ifAdmin() {
         // TODO: check whether msg.sender is the admin of this contract
-        if (msg.sender ==_getAdmin()) {
-            _;
-        }
-        else{
-            _fallback();
-        }
+        require(msg.sender == _getAdmin(), "Only admin can call this function");
+        _;
     }
 
     function _getAdmin() private view returns(address owner) {   
@@ -82,7 +78,7 @@ contract Proxy  {
     }
     function callInitialize(address otherContractAddress, address _owner) public {
         bytes memory payload = abi.encodeWithSignature("initialize(address)", _owner);
-        (bool success, bytes memory result) = otherContractAddress.call(payload);
+        (bool success, ) = otherContractAddress.call(payload);
         require(success, "Call failed");
     }
     function getImplementationOwner(address contractAddress) public view returns (address) {

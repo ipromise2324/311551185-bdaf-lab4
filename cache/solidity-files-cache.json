@@ -679,8 +679,8 @@
       ]
     },
     "/Users/ipromise/Desktop/311551185-bdaf-lab4/contracts/Proxy.sol": {
-      "lastModificationDate": 1680353289776,
-      "contentHash": "c63f4654269ab98b103731ba6799a246",
+      "lastModificationDate": 1680357369850,
+      "contentHash": "e7aa6f1c20864f4a9c785b13b22416f6",
       "sourceName": "contracts/Proxy.sol",
       "solcConfig": {
         "version": "0.8.18",
