@@ -7,11 +7,11 @@ npx hardhat test
 ```
 
 # Solidity-Coverage
-<img width="606" alt="image" src="https://user-images.githubusercontent.com/87699256/229296508-db6ce226-3418-40aa-a01b-7bff1958f131.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/87699256/229348002-533e2698-0ed0-479e-a0d1-192eaaba1164.png">
 (ERC20.sol is for testing)
 
 # Gas-Reporter
-<img width="848" alt="image" src="https://user-images.githubusercontent.com/87699256/229296447-94860d5f-263e-46dc-a1ce-23d782c76692.png">
+<img width="849" alt="image" src="https://user-images.githubusercontent.com/87699256/229348027-8e8f12fb-9cac-4245-881c-42aa097ae606.png">
 
 
 
