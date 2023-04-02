@@ -61,6 +61,23 @@ describe('Lab4_SafeUpgradeable', function () {
         await expect(safeWallet.connect(user).withdraw(erc20.address, withdrawAmount)).to.be.revertedWith("Not enough amount to withdraw");
     });
 
+    it("should fail to takeFee when transfer function fails", async function() {
+        const invalidToken = ethers.constants.AddressZero;
+        await expect(safeWallet.takeFee(invalidToken)).to.be.reverted;
+    });
+
+    it("should revert if token transfer fails", async function () {
+        await safeWallet.initialize(owner.address);
+        // Transfer tokens to user1
+        const transferAmount = 200;
+        await erc20.transfer(user.address, transferAmount);
+        const depositAmount = 500;
+        await expect(
+            safeWallet.connect(user).deposit(erc20.address, depositAmount)
+          ).to.be.reverted;
+        
+    });
+
     it("should initialize the contract only once", async function() {
         await safeWallet.initialize(owner.address);
         await expect(safeWallet.initialize(owner.address)).to.be.revertedWith("already initialized");
@@ -96,6 +113,26 @@ describe('Lab4_SafeUpgradeable', function () {
         expect(fees).to.equal((depositAmount * feePercentage) / 1000);
     });
     
+    it("should  allow withdrawing ", async function() {
+        await safeWallet.initialize(owner.address);
+        // Transfer tokens to user1
+        const transferAmount = 100;
+        await erc20.transfer(user.address, transferAmount);
+        const depositAmount = 50;
+        const withdrawAmount = depositAmount;
+    
+        // Deposit tokens to safe
+        await erc20.connect(user).approve(safeWallet.address, depositAmount);
+        await safeWallet.connect(user).deposit(erc20.address, depositAmount);
+    
+        // Try to withdraw more than available balance
+        await expect(safeWallet.connect(user).withdraw(erc20.address, withdrawAmount));
+
+
+        // 檢查餘額是否正確
+        expect(await safeWallet.getBalance(erc20.address)).to.equal(0);
+    });
+
     it("should revert if non-owner tries to take fees", async () => {
         await safeWallet.initialize(owner.address);
         const nonOwner = user; 

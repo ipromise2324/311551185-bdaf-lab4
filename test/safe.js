@@ -19,6 +19,17 @@ describe('Lab4_Safe', function () {
         await erc20.approve(safeWallet.address, amount);
     }); 
 
+    it("should revert if token transfer fails", async function () {
+        // Transfer tokens to user1
+        const transferAmount = 200;
+        await erc20.transfer(user.address, transferAmount);
+        const depositAmount = 500;
+        await expect(
+            safeWallet.connect(user).deposit(erc20.address, depositAmount)
+          ).to.be.reverted;
+        
+    });
+
     it("should return the contract owner's address", async function() {
         expect(await safeWallet.getOwner()).to.equal(owner.address);
     });
@@ -97,5 +108,16 @@ describe('Lab4_Safe', function () {
 
         const finalBalance = await erc20.balanceOf(owner.address);
         expect(finalBalance).to.equal(initialBalance.add(fees));
+    });
+
+    it("should fail to takeFee when transfer function fails", async function() {
+        const invalidToken = ethers.constants.AddressZero;
+        await expect(safeWallet.takeFee(invalidToken)).to.be.reverted;
+    });
+
+    it("should fail to withdraw when transfer function fails", async function() {
+        
+        const invalidToken = ethers.constants.AddressZero;
+        await expect(safeWallet.withdraw(invalidToken,0)).to.be.reverted;
     });
 });

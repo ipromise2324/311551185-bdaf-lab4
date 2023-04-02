@@ -80,4 +80,20 @@ describe("Lab4_SafeFactory", function() {
         const newImp = await proxy.implementation(); //get proxy's implementation address 
         expect(newImp).to.equal(safeAddesss); //check whether proxy's implementation address is new one 
     });
+
+    it("should fail if callInitialize failed", async function() {
+        const proxyInstance = await ethers.getContractFactory("Proxy");
+        proxy = await proxyInstance.deploy();
+        const MockContract = await ethers.getContractFactory("ERC20");
+        const mockContract = await MockContract.deploy();
+        await expect(proxy.callInitialize(mockContract.address, owner.address)).to.be.revertedWith("Call failed");//ERC20 don't have getImplemcallInitialize，應該會觸發ntationOwner()
+    });
+
+    it("should fail if callInitialize failed", async function() {
+        const proxyInstance = await ethers.getContractFactory("Proxy");
+        proxy = await proxyInstance.deploy();
+        const MockContract = await ethers.getContractFactory("ERC20");
+        const mockContract = await MockContract.deploy();
+        await expect(proxy.getImplementationOwner(mockContract.address)).to.be.revertedWith("Call failed"); //ERC20 don't have getImplementationOwner()
+    });
 });

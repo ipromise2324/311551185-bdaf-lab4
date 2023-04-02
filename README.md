@@ -5,10 +5,15 @@
 npm install
 npx hardhat test
 ```
-# Gas-Reporter
-![messageImage_1680170137440](https://user-images.githubusercontent.com/87699256/228800367-00663376-7b78-424f-a28d-8552907a6c84.jpg)
+
 # Solidity-Coverage
-![messageImage_1680170166584](https://user-images.githubusercontent.com/87699256/228800249-6f0956a9-e1c2-4ba8-8f51-a4defb2ca480.jpg)
+<img width="606" alt="image" src="https://user-images.githubusercontent.com/87699256/229296508-db6ce226-3418-40aa-a01b-7bff1958f131.png">
+(ERC20.sol is for testing)
+
+# Gas-Reporter
+<img width="848" alt="image" src="https://user-images.githubusercontent.com/87699256/229296447-94860d5f-263e-46dc-a1ce-23d782c76692.png">
+
+
 
 # Requirement
 - Contract A (Safe.sol): Add a TakeFee function to the Lab3 assignment and ensure it has an owner.
